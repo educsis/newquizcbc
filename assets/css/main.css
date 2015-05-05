@@ -29,6 +29,12 @@ body{
 	display: none;
 }
 
+.background .vidas{
+	color: #FF7800;
+	float: right;
+	padding-left: 20px;
+}
+
 .contenedor{
 	height: 230px;
 	background-color: #fff;
@@ -47,10 +53,6 @@ h5.usuarioLogin{
 	font-size: 18px;
 }
 
-h5.vidas{
-	color: #fff;
-	float: right;
-}
 
 .welcome{
 	background-color: #8A4BC0;
@@ -113,3 +115,5 @@ h5.vidas{
 	color: #fff;
 	font-size: 28px;
 }
+
+

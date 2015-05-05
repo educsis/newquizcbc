@@ -41,6 +41,7 @@ jQuery(document).ready(function () {
 	$( "body").delegate( ".jugar", "click", function(e) {
 		var usuario = $('.usuarioLogin').text();
 		var preload = base + 'assets/img/preloader.gif';
+		var lasVidas = parseInt($('.lasVidas').html());
 		$('.contenedor').html('<div style="text-align: center; padding-top: 60px;"><img src="'+preload+'" /></div>');
 		$.ajax({
             data: {user: usuario},
@@ -49,6 +50,7 @@ jQuery(document).ready(function () {
         }).done(function(d){
         	$('.punteo').show();
 			$('.tiempo').show();
+			$('.lasVidas').html(lasVidas-1);
         	$('.contenedor').html(d);
         	idusuario = $('.idp').val();
         	inicia_conteo();
@@ -69,6 +71,12 @@ jQuery(document).ready(function () {
 	});
 
 	$( "body").delegate( ".respuestas", "click", function(e) {
+		e.preventDefault();
+		var allBot = $(this).parent();
+		$('.respuestas').prop('disabled', true);
+		//$(this).next().prop('disabled', true);
+		//$(this).previous().prop('disabled', true);
+
 		var obj = $(this).parent().parent();
 		var objB = $(this);
         var stat = $(this).data('stat');
@@ -76,6 +84,8 @@ jQuery(document).ready(function () {
         var color = '';
         var punteo = parseInt($('.punteoSuma').text());
         //$('.punteoSuma').html('<i class="fa fa-spinner"></i>');
+
+        //$(this).;
 
         if(stat==1){
           	color = 'btn-primary';
@@ -101,6 +111,7 @@ jQuery(document).ready(function () {
 		setTimeout(function(){ 
 			$(obj).remove();
 			$(obj).next().addClass('fadeIn animated');
+			$('.respuestas').prop('disabled', false);
 			if(last==1){
 				termina();
 			}

@@ -25,18 +25,35 @@
     <div class="container-fluid">
     	<div class="col-lg-6 background">
     		<img src="<?= base_url('assets/img/cbclogo.png'); ?>" style="float: left; margin-top: 10px; margin-bottom: 10px;" />
+    		
+    		<h3 class="vidas"><span><i class="fa fa-heart"></i></span> <span class="lasVidas"><?= $vidasU; ?></span></h3>
     		<h3 class="punteo"><span><i class="fa fa-flash"></i></span> <span class="punteoSuma">0</span></h3>
     		<h3 class="tiempo"><span><i class="fa fa-clock-o"></i></span> <span class="count">00:00</span></h3>
+
     		<div class="clearfix"></div>
     		<div class="contenedor flipInX animated">
     			<br>
     			<h1 class="welcome">Bienvenido <?= $usuario; ?></h1>
     			<br>
+    			<?php
+    				if($vidasU!=0){
+    			?>
     			<div style="text-align: center;">
 	    			<a href="#" class="btn btn-default btn-lg botonSel jugar">JUGAR TRIVIA</a>
 	    			<br>
 	    			<a href="#" class="btn btn-default btn-lg botonSel rank">VER RANKING</a>
     			</div>
+    			<?php
+    				}else{
+    			?>
+    			<div style="text-align: center;">
+	    			<h2>Ya no tienes mas vidas para jugar</h2>
+	    			<br>
+	    			<a href="#" class="btn btn-default btn-lg botonSel rank">VER RANKING</a>
+    			</div>
+    			<?php 
+    				}
+    			?>
     		</div>	
     		<h5 class="usuarioLogin fadeIn animated"><i class="fa fa-user"></i> <?= $usuario; ?></h5>
     </div>

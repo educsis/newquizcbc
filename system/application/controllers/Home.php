@@ -22,6 +22,19 @@ class Home extends CI_Controller {
 		$c = 1;
 		$usuarioIntranet = 'nuevo_usuario';
 
+		/**get lives**/
+			$vidas = array();
+			$vidasU = 0;
+			$q= $this
+	            ->db
+	            ->select('*')
+	            ->from('quiz')
+	            ->where('usuario', 'nuevo_usuario')
+	            ->get();
+
+	        $vidas = count($q->result_array());
+	        $data['vidasU'] = 5 - $vidas;
+
 		if($c==0){
 			echo '<h1 style="font-size:30px; font-weight:bold;text-align:center;font-family:sans-serif; color: #2F414B;">PARA PODER PARTICIPAR NECESITAS ACCEDER CON TUS DATOS DE ACCESO EN LA INTRANET.</h1>';
 		}else{
